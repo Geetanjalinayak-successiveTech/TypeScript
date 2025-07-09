@@ -2,8 +2,14 @@
 import { useState, useEffect } from "react";
 import axios from "axios";
 
+interface userType{
+  id:number,
+  name:string,
+  email:string
+}
+
 export default function FetchData() {
-  const [user, setUser] = useState([]);
+  const [user, setUser] = useState<userType[]>([]);
 
   useEffect(() => {
     axios

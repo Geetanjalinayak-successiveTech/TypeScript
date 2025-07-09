@@ -3,29 +3,25 @@
 //Import and render the Weather component in the App component with different temperature values.
 
 
-export default function Weather({temperature})
-{
-    let message="";
-    if(temperature>25)
-    {
-        message="Its sunny today";
-    }
+type WeatherProps = {
+  temperature: number;
+};
 
-    else if(temperature<10)
-    {
-        message="It's cold today";
-    }
+export default function Weather({ temperature }: WeatherProps) {
+  let message = "";
 
-    else{
-        message="It's a moderate day";
-    }
+  if (temperature > 25) {
+    message = "It's sunny today";
+  } else if (temperature < 10) {
+    message = "It's cold today";
+  } else {
+    message = "It's a moderate day";
+  }
 
-    return(
-        <div>
-            <p>Temperature: {temperature}</p>
-            <p>{message}</p>
-        </div>
-    )
-    
-    
+  return (
+    <div>
+      <p>Temperature: {temperature}</p>
+      <p>{message}</p>
+    </div>
+  );
 }

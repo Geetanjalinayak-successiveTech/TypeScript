@@ -17,7 +17,7 @@ export default function InputWithDisplay() {
         display: "flex",
         justifyContent: "center",
         alignItems: "center",
-        flexDirection:"flex",
+        padding:200,
         background: "#f4f4f4",
       }}
     >

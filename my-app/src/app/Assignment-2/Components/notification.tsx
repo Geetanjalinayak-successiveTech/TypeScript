@@ -8,7 +8,7 @@
 import { useEffect, useState } from "react";
 
 export default function Notification() {
-  const [message, setMessage] = useState("");
+  const [message, setMessage] = useState<string>("");
 
   useEffect(() => {
     if (message) {
@@ -23,11 +23,10 @@ export default function Notification() {
   return (
     <main>
       <button onClick={() => setMessage("This is new message")}>
-        {" "}
-        Notify Me{" "}
+        Notify Me
       </button>
 
-      <p>Message:{message}</p>
+      <p>Message: {message}</p>
     </main>
   );
 }

@@ -7,8 +7,8 @@
 "use client"
 import { useState } from "react";
 
-export default function useClipboard(text) {
-  const [copied, setCopied] = useState(false);
+export default function useClipboard(text:string) {
+  const [copied, setCopied] = useState<boolean>(false);
 
   const copy = () => {
     const textArea = document.createElement("textarea");

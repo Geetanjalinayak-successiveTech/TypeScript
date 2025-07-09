@@ -12,13 +12,13 @@
 import { useState,useEffect } from "react"
 
 
-export default function useTimer(initial)
+export default function useTimer(initial:number)
 {
-    const [time,setTime]= useState(initial);
-    const [isRunning,setRunning]=useState(false);
+    const [time,setTime]= useState<number>(initial);
+    const [isRunning,setRunning]=useState<boolean>(false);
 
     useEffect(()=>{
-        let timer;
+        let timer:ReturnType<typeof setInterval>;
         if(isRunning && time>0)
         {
             timer= setInterval(()=>{setTime((prev)=>prev-1)},1000);
@@ -29,18 +29,18 @@ export default function useTimer(initial)
     },[time,isRunning])
 
 
-    function start()
+    function start(): void
     {
         setRunning(true);
     }
 
-    function pause()
+    function pause():void
     {
         setRunning(false);
     }
 
 
-    function reset()
+    function reset():void
     {
         setRunning(false);
         setTime(initial);

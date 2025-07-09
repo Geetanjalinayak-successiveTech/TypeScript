@@ -1,5 +1,5 @@
 "use client";
-import { useState } from "react";
+import { ChangeEvent, FormEvent, useState } from "react";
 import { TextField, Button, Box } from "@mui/material";
 
 export default function MUIForm() {
@@ -18,7 +18,7 @@ export default function MUIForm() {
     return !tempErrors.name && !tempErrors.email;
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = (e:FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     if (validate()) {
       alert("Form submitted!");
@@ -49,7 +49,7 @@ export default function MUIForm() {
         label="Name"
         variant="outlined"
         value={formData.name}
-        onChange={(e) =>
+        onChange={(e:ChangeEvent<HTMLInputElement>) =>
           setFormData((prev) => ({ ...prev, name: e.target.value }))
         }
         error={!!errors.name}
@@ -61,7 +61,7 @@ export default function MUIForm() {
         label="Email"
         variant="outlined"
         value={formData.email}
-        onChange={(e) =>
+        onChange={(e:ChangeEvent<HTMLInputElement>) =>
           setFormData((prev) => ({ ...prev, email: e.target.value }))
         }
         error={!!errors.email}

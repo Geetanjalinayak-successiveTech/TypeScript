@@ -2,8 +2,15 @@
 
 import { useState, useCallback } from "react";
 
+type t={
+  id:number,
+  task:string,
+  isComplete:boolean
+  
+}
+
 export default function TaskList() {
-  const list = [
+  const list: t[] = [
     { id: 1, task: "Task-1", isComplete: false },
     { id: 2, task: "Task-2", isComplete: false },
     { id: 3, task: "Task-3", isComplete: false },
@@ -11,7 +18,7 @@ export default function TaskList() {
 
   const [tasks, setTask] = useState(list);
 
-  const toggle = useCallback((id) => {
+  const toggle = useCallback((id:number) => {
     setTask((prevTask) =>
       prevTask.map((t) =>
         t.id === id ? { ...t, isComplete: !t.isComplete } : t

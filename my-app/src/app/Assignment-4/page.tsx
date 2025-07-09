@@ -1,9 +1,10 @@
 "use client";
 
 import { useRouter } from "next/navigation";
+import { CSSProperties } from "react";
 
 export default function Home() {
-   const styleQuestion = {
+   const styleQuestion:CSSProperties = {
     background: "white",
     padding: "20px",
     borderRadius: "12px",

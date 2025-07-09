@@ -3,10 +3,10 @@
 import { useState, useEffect } from "react";
 
 export default function SlideShow() {
-  const [currentSlide, setCurrentSlide] = useState(0);
-  const [isPlaying, setISPlaying] = useState(true);
+  const [currentSlide, setCurrentSlide] = useState<number>(0);
+  const [isPlaying, setISPlaying] = useState<boolean>(true);
 
-  const slides = [
+  const slides: string[] = [
     "/images/c0cb1eca075ae50f27bb1079c573a181.jpg",
     "/images/nature-background-high-resolution-wallpaper-for-a-serene-and-stunning-view-photo.jpg",
     "/images/download (2).jpeg",

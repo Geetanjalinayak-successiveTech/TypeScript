@@ -4,7 +4,9 @@ import { useContext } from "react";
 import { contextProvider } from "../UserAuthentication/page";
 
 export default function Child() {
-  const { isLoggedIn, username, login } = useContext(contextProvider);
+  const user= useContext(contextProvider);
+  if(!user)return null;
+  const { isLoggedIn, username, login } = user;
 
   return (
     <main>

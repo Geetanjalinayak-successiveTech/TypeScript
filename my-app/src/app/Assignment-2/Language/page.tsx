@@ -1,15 +1,20 @@
 "use client";
 
-import { createContext, useState } from "react";
+import { createContext, useState, ReactNode } from "react";
 import Language from "../Components/LanguageSwitcher";
 
-const LanguageSwitcher = createContext(); // create context
+
+type LanguageContextType = {
+  lang: string;
+  setLang: (value: string) => void;
+};
+
+const LanguageSwitcher = createContext<LanguageContextType | null>(null);
 
 export default function App() {
-  const [lang, setLang] = useState("en");
+  const [lang, setLang] = useState<string>("en");
 
   return (
-    // wrap
     <LanguageSwitcher.Provider value={{ lang, setLang }}>
       <div>
         <Language />

@@ -4,31 +4,20 @@
 
 
 
-// export default function UserCard({name,email})
-// {
-    
-//     return(
-//         <div>
-//             <img src="/images/avatar.png" alt="avatar" />
-//             <h2>{name}</h2>
-//             <h2>{email}</h2>
-//         </div>
-//     )
 
-// }
 
-export default function UserCard(prop)
-{
-    let name=prop.name;
-    let email=prop.email;
-    let avatar=prop.avatar;
-    
-    return(
-        <div>
-            <img src={avatar} alt="avatar" width={90}/>
-            <h2>{name}</h2>
-            <h2>{email}</h2>
-        </div>
-    )
+type UserCardProps = {
+  name: string;
+  email: string;
+  avatar: string;
+};
 
+export default function UserCard({ name, email, avatar }: UserCardProps) {
+  return (
+    <div>
+      <img src={avatar} alt="avatar" width={90} />
+      <h2>{name}</h2>
+      <h2>{email}</h2>
+    </div>
+  );
 }

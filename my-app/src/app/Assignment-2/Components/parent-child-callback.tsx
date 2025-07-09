@@ -1,14 +1,17 @@
 "use client"
 
+type props={
+    increment:()=>void
+}
 
 
-export default function Child(props)
+export default function Child({increment}:props)
 {
     return(
     <main>
         <div>
             
-            <button onClick={props.increment}> Click </button>
+            <button onClick={increment}> Click </button>
         </div>
     </main>
     )

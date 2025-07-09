@@ -1,14 +1,14 @@
 "use client";
-import { useState } from "react";
+import { ChangeEvent, FormEvent, InputEventHandler, useState } from "react";
 import { useRouter } from "next/navigation";
 
 export default function LoginPage() {
   const router = useRouter();
-  const [username, setUsername] = useState("");
-  const [password, setPassword] = useState("");
-  const [msg, setMsg] = useState("");
+  const [username, setUsername] = useState<string>("");
+  const [password, setPassword] = useState<string>("");
+  const [msg, setMsg] = useState<string>("");
 
-  function handleLogin(e) {
+  function handleLogin(e:FormEvent<HTMLFormElement>) {
     e.preventDefault();
     if (username === "Geetanjali" && password === "1234") {
       localStorage.setItem("user", JSON.stringify({ username }));
@@ -35,7 +35,7 @@ export default function LoginPage() {
         <input
           type="password"
           value={password}
-          onChange={(e) => setPassword(e.target.value)}
+          onChange={(e:ChangeEvent<HTMLInputElement>) => setPassword(e.target.value)}
           placeholder="Password"
         />
         <br />

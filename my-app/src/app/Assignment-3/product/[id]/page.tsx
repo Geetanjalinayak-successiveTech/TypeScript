@@ -8,9 +8,10 @@ const products = [
   { id: 3, name: "product-3", price: 15000 },
 ];
 
+
 export default function ProductID()
 {
-    const {id}= useParams();
+    const id = (Number(useParams().id));
     const router= useRouter();
 
     const product = products.find((item) => item.id == id);

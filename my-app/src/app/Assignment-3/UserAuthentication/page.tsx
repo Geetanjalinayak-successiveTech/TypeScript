@@ -3,16 +3,22 @@
 import { createContext, useState } from "react"
 import Child from "../Components/userAuthentication";
 
+interface contextProviderType{
+  isLoggedIn:boolean,
+  username:string,
+  login:()=>void,
+}
 
-const contextProvider= createContext();
+
+const contextProvider= createContext<contextProviderType|null>(null);
 
 export default function Parent()
 {
-    const [isLoggedIn,setLoggedIn]=useState(false);
-    const [username,setUsername]= useState("Geetanjali")
+    const [isLoggedIn,setLoggedIn]=useState<boolean>(false);
+    const [username,setUsername]= useState<string>("Geetanjali")
 
 
-    function login()
+    function login(): void
     {
         setLoggedIn(true);
     }

@@ -4,17 +4,24 @@
 // Use the useContext hook to access the current language value.
 // Display different language versions of the application's content.
 
+"use client";
+
 import { LanguageSwitcher } from "../Language/page";
 import { useContext } from "react";
 
-export default function Language() {
-  const { lang, setLang } = useContext(LanguageSwitcher);
 
- 
+type LangContextType = {
+  lang: string;
+  setLang: (value: string) => void;
+};
+
+export default function Language() {
+  const { lang, setLang } = useContext(LanguageSwitcher as React.Context<LangContextType>);
 
   return (
     <main>
-      <h1> {lang === "en" ? "Hello" : "Hola"}</h1>
+      <h1>{lang === "en" ? "Hello" : "Hola"}</h1>
+
       <button
         onClick={() => {
           if (lang === "en") {
@@ -24,6 +31,7 @@ export default function Language() {
       >
         Translate to Spanish
       </button>
+
       <button
         onClick={() => {
           if (lang === "span") {
@@ -36,3 +44,4 @@ export default function Language() {
     </main>
   );
 }
+

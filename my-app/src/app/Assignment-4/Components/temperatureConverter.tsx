@@ -3,7 +3,7 @@ import { useState } from "react";
 
 export default function TemperatureConverter() {
   const [temp, setTemp] = useState(0);
-  const [converter, setConverter] = useState(null);
+  const [converter, setConverter] = useState<number>();
 
   function handleCelsius() {
     setConverter(((temp - 32) * 5) / 9);

@@ -16,7 +16,7 @@ export default function Sidebar() {
     >
       <List>
         {items.map((el) => (
-          <ListItem button="true" key={el}>
+          <ListItem  key={el}>
             <ListItemText primary={el} />
           </ListItem>
         ))}

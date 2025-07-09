@@ -1,7 +1,8 @@
 'use client';
-import { AuthProvider } from './AuthContext';
-import { ThemeProvider } from './ThemeContext';
-import ChildComponent from './ChildComponent';
+
+import { AuthProvider } from "./authContext";
+import { ThemeProvider } from "./themeContext";
+import ChildComponent from "./child";
 
 export default function ParentComponent() {
   return (

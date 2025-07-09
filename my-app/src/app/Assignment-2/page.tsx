@@ -1,7 +1,8 @@
 import Link from "next/link";
+import { CSSProperties } from "react";
 
 export default function QuestionPage() {
-  const styleQuestion = {
+  const styleQuestion:CSSProperties = {
     background: "white",
     padding: "20px",
     borderRadius: "12px",

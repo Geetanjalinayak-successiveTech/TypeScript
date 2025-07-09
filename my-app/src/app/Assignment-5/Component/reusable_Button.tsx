@@ -1,5 +1,14 @@
-"use client"
-import { useState } from "react";
+"use client";
+import { CSSProperties, ReactNode, MouseEventHandler, ButtonHTMLAttributes, useState } from "react";
+
+type Variant = 'primary' | 'secondary' | 'danger';
+
+interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
+  children: ReactNode;
+  variant?: Variant;
+  onClick?: MouseEventHandler<HTMLButtonElement>;
+  style?: CSSProperties;
+}
 
 const styles = {
   base: {
@@ -10,7 +19,7 @@ const styles = {
     color: '#fff',
     cursor: 'pointer',
     transition: 'background-color 0.2s ease',
-  },
+  } as CSSProperties,
   variants: {
     primary: {
       backgroundColor: '#0070f3',
@@ -21,22 +30,28 @@ const styles = {
     danger: {
       backgroundColor: '#dc3545',
     },
-  },
+  } as Record<Variant, CSSProperties>,
   hoverColors: {
     primary: '#0059c1',
     secondary: '#545b62',
     danger: '#b52a37',
-  },
+  } as Record<Variant, string>,
 };
 
-const Button = ({ children, variant = 'primary', onClick, style = {}, ...props }) => {
+export default function Button({
+  children,
+  variant = 'primary',
+  onClick,
+  style = {},
+  ...props
+}: ButtonProps) {
   const [hovered, setHovered] = useState(false);
 
-  const combinedStyle = {
+  const combinedStyle: CSSProperties = {
     ...styles.base,
     ...styles.variants[variant],
     ...(hovered && { backgroundColor: styles.hoverColors[variant] }),
-    ...style, // Allow custom styles via props
+    ...style,
   };
 
   return (
@@ -50,6 +65,4 @@ const Button = ({ children, variant = 'primary', onClick, style = {}, ...props }
       {children}
     </button>
   );
-};
-
-export default Button;
+}

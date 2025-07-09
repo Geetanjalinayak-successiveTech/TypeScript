@@ -1,8 +1,14 @@
 "use client";
 import { useState } from "react";
 
+interface userType{
+  id:number,
+  name:string,
+  email:string
+}
+
 export default function RetryUsers({ users = [], error = false }) {
-  const [userData, setUserData] = useState(users);
+  const [userData, setUserData] = useState<userType[]>(users);
   const [hasError, setHasError] = useState(error);
   const [loading, setLoading] = useState(false);
 

@@ -5,24 +5,29 @@ import { TextField, Button, Box, Typography } from "@mui/material";
 
 const SignUpSchema = Yup.object().shape({
   email: Yup.string().email("Invalid email").required("Required"),
-
-  Password: Yup.string()
-    .min(4, "Your Password should be  more than 4 characters!")
+  password: Yup.string()
+    .min(4, "Your Password should be more than 4 characters!")
     .max(50, "Your Password should be less than 50 characters!")
     .required("Required"),
 });
 
+type initialValuesType = {
+  email: string;
+  password: string;
+};
+
 export default function ComplexForm() {
-  const { values, errors, touched, handleChange, handleBlur, handleSubmit } = useFormik({
-    initialValues: {
-      email: "",
-      Password: "",
-    },
-    validationSchema: SignUpSchema,
-    onSubmit: (values) => {
-      alert(JSON.stringify(values, null, 2));
-    },
-  });
+  const { values, errors, touched, handleChange, handleBlur, handleSubmit } =
+    useFormik<initialValuesType>({
+      initialValues: {
+        email: "",
+        password: "",
+      },
+      validationSchema: SignUpSchema,
+      onSubmit: (values) => {
+        alert(JSON.stringify(values, null, 2));
+      },
+    });
 
   return (
     <Box
@@ -47,11 +52,11 @@ export default function ComplexForm() {
           label="Email"
           name="email"
           margin="normal"
-          value={values.email}          
-          onChange={handleChange}        
-          onBlur={handleBlur}            
-          error={touched.email && Boolean(errors.email)}  
-          helperText={touched.email && errors.email}     
+          value={values.email}
+          onChange={handleChange}
+          onBlur={handleBlur}
+          error={touched.email && Boolean(errors.email)}
+          helperText={touched.email && errors.email}
         />
 
         <TextField
@@ -60,11 +65,11 @@ export default function ComplexForm() {
           name="password"
           type="password"
           margin="normal"
-          value={values.password}      
-          onChange={handleChange}       
-          onBlur={handleBlur}          
-          error={touched.Password && Boolean(errors.Password)}  
-          helperText={touched.Password && errors.Password}      
+          value={values.password}
+          onChange={handleChange}
+          onBlur={handleBlur}
+          error={touched.password && Boolean(errors.password)}
+          helperText={touched.password && errors.password}
         />
 
         <Button

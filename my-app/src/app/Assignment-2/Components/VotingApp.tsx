@@ -1,13 +1,21 @@
 "use client";
 import { useReducer } from "react";
 
+type voteState={
+  A:number,
+  B:number,
+  C:number
+}
+
 const initial = {
   A: 0,
   B: 0,
   C: 0,
 };
 
-function voteReducer(state, action) {
+type voteAction= {type: "VOTE_OPTION_A"}|{type: "VOTE_OPTION_B"} | {type: "VOTE_OPTION_C"}
+
+function voteReducer(state:voteState, action:voteAction) {
   switch (action.type) {
     case "VOTE_OPTION_A":
       return { ...state, A: state.A + 1 };

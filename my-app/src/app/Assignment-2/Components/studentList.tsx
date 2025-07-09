@@ -3,10 +3,10 @@
 import { useMemo, useState } from "react";
 
 export default function StudentList() {
-  let studentList = ["Geetanjali ",  "Abhishek ", "Vaishnavi "];
-  const [list, setList] = useState([studentList]);
+  let studentList: string[] = ["Geetanjali ",  "Abhishek ", "Vaishnavi "];
+  const [list, setList] = useState<string[]>(studentList);
 
-  const addStudent = () =>
+  const addStudent = ():void =>
     setList((prevStudents) => [
       ...prevStudents,
       `Student ${prevStudents.length + 1}`,

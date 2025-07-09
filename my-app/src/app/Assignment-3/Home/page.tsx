@@ -2,8 +2,12 @@
 import { useEffect, useState } from 'react';
 import { useRouter } from 'next/navigation';
 
+interface userType{
+  username:string
+}
+
 export default function Home() {
-  const [user, setUser] = useState(null);
+  const [user, setUser] = useState<userType|null>(null);
   const router=useRouter()
 
   useEffect(() => {

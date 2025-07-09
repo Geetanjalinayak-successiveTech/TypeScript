@@ -1,22 +1,30 @@
-// .Build a shopping cart application using the useContext hook.
-// Set up a context to manage the state of the shopping cart.
-// Create components to display products and a shopping cart.
-// Use the useContext hook to access the cart state and update it.
-// Allow users to add and remove items from the cart.
-// Display the total price of items in the cart.
+"use client";
 
+import { useContext } from "react";
+import { CartContext } from "../ShoppingCart/page";
 
-"use client"
+// Define the product type
+type Product = {
+  id: number;
+  name: string;
+  price: number;
+};
 
-import { useContext,useState } from "react"
-import { CartContext } from "../ShoppingCart/page"
-
-
-
+// Define the Cart context type
+type CartContextType = {
+  cartItems: Product[];
+  addItems: (product: Product) => void;
+  removeItems: (id: number) => void;
+  total: number;
+};
 
 export function ProductList() {
-  const { addItems } = useContext(CartContext);
-  const products = [
+  const context = useContext(CartContext);
+
+  if (!context) return null;
+  const { addItems } = context;
+
+  const products: Product[] = [
     { id: 1, name: "Laptop", price: 60000 },
     { id: 2, name: "Phone", price: 30000 },
     { id: 3, name: "Watch", price: 2000 },
@@ -36,7 +44,10 @@ export function ProductList() {
 }
 
 export function Cart() {
-  const { cartItems, removeItems, total } = useContext(CartContext);
+  const context = useContext(CartContext);
+
+  if (!context) return null;
+  const { cartItems, removeItems, total } = context;
 
   return (
     <div>

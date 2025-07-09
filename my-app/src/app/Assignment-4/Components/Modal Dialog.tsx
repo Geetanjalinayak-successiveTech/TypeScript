@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState } from "react";
+import React, { ChangeEvent, useState } from "react";
 import {
   Button,
   Dialog,
@@ -49,7 +49,7 @@ export default function ModalDialog() {
             fullWidth
             variant="outlined"
             value={input}
-            onChange={(e) => setInput(e.target.value)}
+            onChange={(e:ChangeEvent<HTMLInputElement>) => setInput(e.target.value)}
           />
         </DialogContent>
 

@@ -1,16 +1,20 @@
-"use client"
-import { useEffect } from "react"
+"use client";
+import { FC, useEffect } from "react";
 
-const WithLogger=(Components)=>{
-    return (props)=>{
-        useEffect(() => { console.log("Mount")
-        return ()=>{console.log("unmount")
-        }},[])
-        
-        useEffect(()=>{console.log("Update");
-        },[])
-         return <Components {...props}/>
-    }
-}
+const WithLogger = <P extends object>(Components: FC) => {
+  return () => {
+    useEffect(() => {
+      console.log("Mount");
+      return () => {
+        console.log("unmount");
+      };
+    }, []);
 
-export default WithLogger
+    useEffect(() => {
+      console.log("Update");
+    }, []);
+    return <Components />;
+  };
+};
+
+export default WithLogger;

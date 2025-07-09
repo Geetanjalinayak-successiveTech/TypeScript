@@ -1,11 +1,17 @@
 'use client';
 import { useContext } from 'react';
-import { AuthContext } from './authContext';
+import { AuthContext} from './authContext';
 import { ThemeContext } from './themeContext';
 
 export default function ChildComponent() {
-  const { isLoggedIn, login, username } = useContext(AuthContext);
-  const { theme, toggleTheme } = useContext(ThemeContext);
+
+  const auth= useContext(AuthContext);
+  if(!auth)return null
+  const them= useContext(ThemeContext)
+  if(!them) return null
+
+  const { isLoggedIn, login, username } = auth
+  const { theme, toggleTheme } = them
 
   
 

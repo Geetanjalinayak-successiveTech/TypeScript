@@ -2,7 +2,8 @@
 import * as Yup from "yup";
 import { useFormik } from "formik";
 import { TextField, Button, Box, Typography } from "@mui/material";
-import { useState } from "react";
+import {Alert} from "@mui/material";
+import { FormEvent, FormEventHandler, useState } from "react";
 
 const signUpSchema = Yup.object().shape({
   email: Yup.string().email("Invalid email").required("Required"),
@@ -28,7 +29,7 @@ export default function FormErrorHandling() {
     },
   });
 
-  const handleSubmit = (e) => {
+  const handleSubmit = (e:FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     setShowErrors(true);
     formik.handleSubmit(e);

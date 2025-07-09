@@ -1,14 +1,22 @@
 "use client";
+
 import { useState } from "react";
 
+
+type Todo = {
+  id: number;
+  task: string;
+  completed: boolean;
+};
+
 export default function ToDo() {
-  const [toDo, setToDo] = useState([]);
-  const [inputVal, setInput] = useState("");
+  const [toDo, setToDo] = useState<Todo[]>([]);
+  const [inputVal, setInput] = useState<string>("");
 
   const addTask = () => {
     if (inputVal.trim() === "") return;
 
-    const newToDo = {
+    const newToDo: Todo = {
       id: Date.now(),
       task: inputVal,
       completed: false,
@@ -18,18 +26,15 @@ export default function ToDo() {
     setInput("");
   };
 
-  const updateToDo = (id) => {
-    const update = toDo.map((ele) => 
+  const updateToDo = (id: number) => {
+    const update = toDo.map((ele) =>
       ele.id === id ? { ...ele, completed: !ele.completed } : ele
     );
-
     setToDo(update);
   };
 
-  const deleteToDo = (id) => {
-    const delToDo = toDo.filter((ele) => 
-      ele.id !== id
-    );
+  const deleteToDo = (id: number) => {
+    const delToDo = toDo.filter((ele) => ele.id !== id);
     setToDo(delToDo);
   };
 
@@ -56,31 +61,5 @@ export default function ToDo() {
         </div>
       ))}
     </div>
-    //   <div>
-    //   <h2>To-Do List</h2>
-    //   <input
-    //     type="text"
-    //     placeholder="Enter a task"
-    //     value={inputVal}
-    //     onChange={(e) => setInput(e.target.value)}
-    //   />
-    //   <button onClick={addTask}>Add</button>
-
-    //   <ul>
-    //     {console.log(toDo)}
-
-    //     {toDo.map((todo) => (
-    //       <li key={todo.id} style={{ textDecoration: todo.completed ? 'line-through' : 'none' }}>
-    //         <input
-    //           type="checkbox"
-    //           checked={todo.completed}
-    //           onChange={() => updateToDo(todo.id)}
-    //         />
-    //         {todo.task}
-    //         <button onClick={() => deleteToDo(todo.id)}>Delete</button>
-    //       </li>
-    //     ))}
-    //   </ul>
-    // </div>
   );
 }

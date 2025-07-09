@@ -1,6 +1,6 @@
 "use client"
 import { useRouter } from "next/navigation"
-import { Router } from "next/router"
+
 
 export default function Dashboard()
 {
